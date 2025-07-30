@@ -1,9 +1,12 @@
+import { IconSvgDocumentStack } from "../../components/icons/IconSvgDocumentStack";
+
 const Navbar = (): React.ReactElement => {
 	return (
 		<>
 			<nav className="navbar navbar-expand-lg navbar-expand-md navbar-expand-xl navbar-expand-sm">
 				<div className="container-fluid">
 					<a className="navbar-brand" href="#">
+						<IconSvgDocumentStack size={36} />
 						Docshell
 					</a>
 					<button
@@ -20,7 +23,7 @@ const Navbar = (): React.ReactElement => {
 					<div className="collapse navbar-collapse" id="navbarNavAltMarkup">
 						<div className="navbar-nav">
 							<a className="nav-link active" aria-current="page" href="#">
-								Home
+								DocumentView
 							</a>
 							<a className="nav-link" href="#">
 								View

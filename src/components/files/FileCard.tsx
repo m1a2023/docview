@@ -12,8 +12,8 @@ const FileCard = ({ file }: FileCardProps): React.ReactElement => {
 		<>
 			<div className="container list-group-item list-group-item-action">
 				<div className="row">
-					<div className="col">{file.name}</div>
-					<div className="col-2 text-mid">{size}</div>
+					<div className="col text-break">{file.name}</div>
+					<div className="col-2 text-mid container">{size}</div>
 				</div>
 			</div>
 		</>

@@ -2,16 +2,14 @@ import { DocumentCard } from "../../components/docs/DocumentCard";
 import type { Doc } from "../../shared/types/docs/Document";
 
 type DocumentListProps = {
-	documentList: Doc[];
+	documents: Doc[];
 };
 
-const DocumentList = ({
-	documentList,
-}: DocumentListProps): React.ReactElement => {
+const DocumentList = ({ documents }: DocumentListProps): React.ReactElement => {
 	return (
 		<>
 			<div className="list-group">
-				{documentList.map((d) => (
+				{documents.map((d) => (
 					<DocumentCard document={d} />
 				))}
 			</div>

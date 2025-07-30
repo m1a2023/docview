@@ -1,7 +1,7 @@
 import type React from "react";
-import MultipleFileInput from "../../features/input/FileInput";
+import MultipleFileInput from "../../components/files/FileInput";
 import { useState } from "react";
-import FileCard from "../../components/files/FileCard";
+import SelectedFilesList from "./SelectedFilesList";
 
 const DocumentsUpload = (): React.ReactElement => {
 	const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
@@ -9,17 +9,9 @@ const DocumentsUpload = (): React.ReactElement => {
 	return (
 		<>
 			<div className="mb-4">
-				<MultipleFileInput SetSelectedFiles={setSelectedFiles} />
+				<MultipleFileInput capture={setSelectedFiles} />
 			</div>
-			<div>
-				{selectedFiles.length > 0 && (
-					<div className="list-group">
-						{selectedFiles.map((file) => (
-							<FileCard file={file} />
-						))}
-					</div>
-				)}
-			</div>
+			<SelectedFilesList files={selectedFiles} />
 		</>
 	);
 };

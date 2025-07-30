@@ -1,15 +1,15 @@
 import { type ChangeEvent } from "react";
 
 interface MultipleFileInputProps {
-	SetSelectedFiles: (initialState: File[] | (() => File[])) => void;
+	capture: (initialState: File[] | (() => File[])) => void;
 }
 
-const MultipleFileInput = ({ SetSelectedFiles }: MultipleFileInputProps) => {
+const MultipleFileInput = ({ capture }: MultipleFileInputProps) => {
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		if (e.target.files) {
-			SetSelectedFiles(Array.from(e.target.files));
+			capture(Array.from(e.target.files));
 		} else {
-			SetSelectedFiles([]);
+			capture([]);
 		}
 	};
 

@@ -1,7 +1,7 @@
 import type React from "react";
 import { Outlet } from "react-router";
 
-const HomeLayout = (): React.ReactElement => {
+const DocumentLayout = (): React.ReactElement => {
 	return (
 		<>
 			<Outlet />
@@ -9,4 +9,4 @@ const HomeLayout = (): React.ReactElement => {
 	);
 };
 
-export default HomeLayout;
+export default DocumentLayout;

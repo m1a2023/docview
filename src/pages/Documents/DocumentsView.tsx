@@ -4,7 +4,7 @@ import { FetchDocuments } from "../../shared/api/docs/documents";
 import { HttpStatusCode } from "axios";
 import type { Doc } from "../../shared/types/docs/Document";
 
-const Home = (): React.ReactElement => {
+const DocumentsView = (): React.ReactElement => {
 	const [documents, setDocuments] = useState<Doc[]>(new Array<Doc>());
 
 	useEffect(() => {
@@ -25,9 +25,9 @@ const Home = (): React.ReactElement => {
 
 	return (
 		<>
-			<DocumentList documentList={documents} />
+			<DocumentList documents={documents} />
 		</>
 	);
 };
 
-export default Home;
+export default DocumentsView;

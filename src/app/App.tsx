@@ -2,7 +2,7 @@ import { createContext } from "react";
 import { ApplicationTheme } from "../features/theme/Theme";
 import type { GlobalContext } from "../shared/types/context/GlobalContext";
 import { Outlet } from "react-router";
-import useTheme from "../features/theme/useTheme";
+import useTheme from "../features/theme/UseTheme";
 
 // App context creation
 const AppContext = createContext<GlobalContext | null>(null);
