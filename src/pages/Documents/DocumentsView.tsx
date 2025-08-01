@@ -3,9 +3,17 @@ import DocumentList from "../../widgets/docs/DocumentList";
 import { FetchDocuments } from "../../shared/api/docs/documents";
 import { HttpStatusCode } from "axios";
 import type { Doc } from "../../shared/types/docs/Document";
+import { Spinner } from "../../components/spinner/Spinner";
 
 const DocumentsView = (): React.ReactElement => {
 	const [documents, setDocuments] = useState<Doc[]>(new Array<Doc>());
+	const [isLoaded, setIsLoaded] = useState<boolean>(false);
+
+	const SpinnerContainer = () => (
+		<div className="d-flex justify-content-center">
+			<Spinner type="border" color="primary" className="p-4" />
+		</div>
+	);
 
 	useEffect(() => {
 		FetchDocuments()
@@ -18,14 +26,21 @@ const DocumentsView = (): React.ReactElement => {
 				}
 			})
 			.then((response) => {
-				setDocuments(response.documents);
+				setTimeout(
+					() => {
+						setDocuments(response.documents);
+						setIsLoaded(true);
+					},
+					100000,
+					[]
+				);
 			})
 			.catch(console.error);
 	}, []);
 
 	return (
 		<>
-			<DocumentList documents={documents} />
+			{isLoaded ? <DocumentList documents={documents} /> : <SpinnerContainer />}
 		</>
 	);
 };
