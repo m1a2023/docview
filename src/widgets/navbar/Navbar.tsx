@@ -10,24 +10,18 @@ const Navbar = (): React.ReactElement => {
 	const handleLogOut = () => {
 		auth?.setLoggedIn(false);
 	};
-	// Get theme
-	const theme = useContext(AppContext)?.Theme;
-	// Inverse theme for 'Log in' or 'Log out' button
-	const buttonColor = (): string | undefined => {
-		return theme?.theme;
-	};
 
 	return (
 		<>
 			<nav className="navbar navbar-expand-lg navbar-expand-md navbar-expand-xl navbar-expand-sm">
 				<div className="container-fluid gap-2">
+					<IconSvgDocumentStack size={36} />
 					<NavbarButtonLink
 						text="Docshell"
-						className="navbar-brand"
 						href="/documents"
-					>
-						<IconSvgDocumentStack size={36} />
-					</NavbarButtonLink>
+						className="navbar-brand px-2"
+					></NavbarButtonLink>
+
 					<button
 						className="navbar-toggler"
 						type="button"
@@ -39,19 +33,21 @@ const Navbar = (): React.ReactElement => {
 					>
 						<span className="navbar-toggler-icon"></span>
 					</button>
-					<div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-						<div className="navbar-nav gap-2">
+					<div
+						className="collapse navbar-collapse justify-between"
+						id="navbarNavAltMarkup"
+					>
+						<div className="navbar-nav gap-2 me-auto mb-2 mb-lg-0">
 							<NavbarButtonLink text="View" href="/documents/view" />
 							<NavbarButtonLink text="Upload" href="/documents/upload" />
 						</div>
+						<NavbarButtonLink
+							text={auth?.loggedIn ? "Log out" : "Login"}
+							href="/login"
+							onClick={handleLogOut}
+							className="d-flex"
+						/>
 					</div>
-
-					<NavbarButtonLink
-						text={auth?.loggedIn ? "Log out" : "Log in"}
-						href="/login"
-						onClick={handleLogOut}
-						className={`btn btn-${buttonColor()} py-2 px-3`}
-					/>
 				</div>
 			</nav>
 		</>

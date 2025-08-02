@@ -19,7 +19,6 @@ const router = createBrowserRouter([
 						children: [
 							{
 								path: "/documents/view",
-								index: true,
 								element: <DocumentsView />,
 							},
 							{
@@ -28,6 +27,11 @@ const router = createBrowserRouter([
 							},
 						],
 					},
+					// {
+					// 	path: "/login",
+					// 	element: <LoginLayout />,
+					// 	children: [ ]
+					// }
 				],
 			},
 		],

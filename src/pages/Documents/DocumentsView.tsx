@@ -10,7 +10,7 @@ const DocumentsView = (): React.ReactElement => {
 	const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
 	const SpinnerContainer = () => (
-		<div className="d-flex justify-content-center">
+		<div className="position-absolute top-50 start-50 translate-middle">
 			<Spinner type="border" color="primary" className="p-4" />
 		</div>
 	);
@@ -18,7 +18,7 @@ const DocumentsView = (): React.ReactElement => {
 	useEffect(() => {
 		FetchDocuments()
 			.then((response) => {
-				if (response.status == HttpStatusCode.Ok) {
+				if (response.status === HttpStatusCode.Ok) {
 					return response.data;
 				} else {
 					// TODO correctly handling error
@@ -26,14 +26,8 @@ const DocumentsView = (): React.ReactElement => {
 				}
 			})
 			.then((response) => {
-				setTimeout(
-					() => {
-						setDocuments(response.documents);
-						setIsLoaded(true);
-					},
-					100000,
-					[]
-				);
+				setDocuments(response.documents);
+				setIsLoaded(true);
 			})
 			.catch(console.error);
 	}, []);
