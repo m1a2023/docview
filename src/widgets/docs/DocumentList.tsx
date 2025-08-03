@@ -1,4 +1,5 @@
-import { DocumentCard } from "../../components/docs/DocumentCard";
+import { AccordionDocumentCard } from "./AccordionDocumentCard";
+// import { DocumentCard } from "../../components/docs/DocumentCard";
 import type { Doc } from "../../shared/types/docs/Document";
 
 type DocumentListProps = {
@@ -10,7 +11,7 @@ const DocumentList = ({ documents }: DocumentListProps): React.ReactElement => {
 		<>
 			<div className="list-group">
 				{documents.map((d) => (
-					<DocumentCard document={d} />
+					<AccordionDocumentCard document={d} />
 				))}
 			</div>
 		</>
