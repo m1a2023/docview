@@ -1,11 +1,11 @@
 import type React from "react";
-import type { DocumentCardProps } from "./DocumentCard";
 import reduceSize from "../../features/utils/SizeReducer";
 import { extractDateAndTime } from "../../features/utils/DateAndTime";
+import type { DocumentProps } from "../../shared/types/docs/DocumentProps";
 
 export const DocumentMetadata = ({
 	document,
-}: DocumentCardProps): React.ReactElement => {
+}: DocumentProps): React.ReactElement => {
 	const size = reduceSize(document.size);
 	const created = extractDateAndTime(new Date(document.created_at));
 	const changed = extractDateAndTime(new Date(document.created_at));
@@ -36,7 +36,6 @@ export const DocumentMetadata = ({
 					className={`${className}`}
 					type="text"
 					value={title}
-					aria-label="Disabled input example"
 					disabled
 					readOnly
 				></input>
@@ -46,7 +45,6 @@ export const DocumentMetadata = ({
 					className={`${className}`}
 					type="text"
 					value={value}
-					aria-label="Disabled input example"
 					disabled
 					readOnly
 				></input>

@@ -3,7 +3,7 @@ import type { GlobalContext } from "../shared/types/context/GlobalContext";
 import { Outlet } from "react-router";
 import useTheme from "../features/theme/UseTheme";
 import { AppContext } from "./AppContext";
-import { useState } from "react";
+import { StrictMode, useState } from "react";
 
 const App = (): React.ReactElement => {
 	// Get and set application theme
@@ -18,11 +18,13 @@ const App = (): React.ReactElement => {
 	};
 
 	return (
-		<AppContext.Provider value={context}>
-			<div data-bs-theme={theme}>
-				<Outlet />
-			</div>
-		</AppContext.Provider>
+		<StrictMode>
+			<AppContext.Provider value={context}>
+				<div data-bs-theme={theme}>
+					<Outlet />
+				</div>
+			</AppContext.Provider>
+		</StrictMode>
 	);
 };
 

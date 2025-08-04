@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import DocumentList from "../../widgets/docs/DocumentList";
-import { FetchDocuments } from "../../shared/api/docs/documents";
+import { DocumentAPI, FetchDocuments } from "../../shared/api/docs/documents";
 import { HttpStatusCode } from "axios";
 import type { Doc } from "../../shared/types/docs/Document";
 import { Spinner } from "../../components/spinner/Spinner";
+import type { DocMultipleResponse } from "../../shared/types/docs/DocumentResponse";
 
 const DocumentsView = (): React.ReactElement => {
 	const [documents, setDocuments] = useState<Doc[]>(new Array<Doc>());
@@ -16,20 +17,15 @@ const DocumentsView = (): React.ReactElement => {
 	);
 
 	useEffect(() => {
-		FetchDocuments()
-			.then((response) => {
-				if (response.status === HttpStatusCode.Ok) {
-					return response.data;
-				} else {
-					// TODO correctly handling error
-					throw new Error("Raised exception");
-				}
-			})
-			.then((response) => {
-				setDocuments(response.documents);
+		const api = new DocumentAPI();
+		api
+			.read<undefined, DocMultipleResponse>()
+			.then((res: DocMultipleResponse) => {
+				console.log(res);
+				setDocuments(res.documents);
 				setIsLoaded(true);
 			})
-			.catch(console.error);
+			.catch(console.log);
 	}, []);
 
 	return (
