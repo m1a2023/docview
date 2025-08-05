@@ -7,7 +7,6 @@ import DocumentsView from "../pages/Documents/DocumentsView";
 
 const router = createBrowserRouter([
 	{
-		path: "/",
 		element: <App />,
 		children: [
 			{

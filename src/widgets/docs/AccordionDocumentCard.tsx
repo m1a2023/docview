@@ -4,23 +4,25 @@ import { DocumentMetadata } from "../../components/docs/DocumentMetadata";
 import type { DocumentProps } from "../../shared/types/docs/DocumentProps";
 import { IoMdDownload } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
+import { Download } from "../../features/utils/Download";
+import { API_ENDPOINTS } from "../../shared/api/endpoints";
 
 export const AccordionDocumentCard = ({
 	document,
 }: DocumentProps): React.ReactElement => {
 	const [isExpand, setIsExpand] = React.useState(false);
-	const [isDownloadPressed, setIsDownloadPressed] = React.useState(false);
-	const [isDeletePressed, setIsDeletePressed] = React.useState(false);
 
 	const handleCardClick = () => setIsExpand(!isExpand);
 
 	const handleDownloadClick = () => {
-		setIsDownloadPressed(!isDownloadPressed);
+		const path = document.path + document.title;
+		Download.file(
+			encodeURI(`${API_ENDPOINTS.documents}/download?path=${path}`),
+			document.title
+		);
 	};
 
-	const handleDeleteClick = () => {
-		setIsDeletePressed(!isDeletePressed);
-	};
+	const handleDeleteClick = () => {};
 
 	const DocumentMetadataContainer = () => (
 		<>

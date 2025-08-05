@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import DocumentList from "../../widgets/docs/DocumentList";
-import { DocumentAPI, FetchDocuments } from "../../shared/api/docs/documents";
-import { HttpStatusCode } from "axios";
+import { DocumentAPI } from "../../shared/api/docs/documents";
 import type { Doc } from "../../shared/types/docs/Document";
 import { Spinner } from "../../components/spinner/Spinner";
 import type { DocMultipleResponse } from "../../shared/types/docs/DocumentResponse";

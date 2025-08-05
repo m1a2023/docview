@@ -1,12 +1,13 @@
 import axios, { HttpStatusCode } from "axios";
 import type { IAPI, MethodType } from "../api";
+import { API_ENDPOINTS } from "../endpoints";
 
 interface IDocumentAPI extends IAPI {
 	readById<T, R>(item: T): Promise<R>;
 }
 
 export class DocumentAPI implements IDocumentAPI {
-	private url = "http://localhost:8080/docs";
+	private url = API_ENDPOINTS.documents;
 
 	public async create<T, R>(item: T): Promise<R> {
 		return this.apply(this.url, "post", item);
