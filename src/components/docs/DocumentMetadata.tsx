@@ -40,7 +40,7 @@ export const DocumentMetadata = ({
 					readOnly
 				></input>
 			</div>
-			<div className="col">
+			<div className="col user-select-all">
 				<input
 					className={`${className}`}
 					type="text"

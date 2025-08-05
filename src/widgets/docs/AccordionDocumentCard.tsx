@@ -5,7 +5,7 @@ import type { DocumentProps } from "../../shared/types/docs/DocumentProps";
 import { IoMdDownload } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
 import { Download } from "../../features/utils/Download";
-import { API_ENDPOINTS } from "../../shared/api/endpoints";
+import { API_ENDPOINTS } from "../../shared/api/api/endpoints";
 
 export const AccordionDocumentCard = ({
 	document,
@@ -22,7 +22,9 @@ export const AccordionDocumentCard = ({
 		);
 	};
 
-	const handleDeleteClick = () => {};
+	const handleDeleteClick = () => {
+		// TODO
+	};
 
 	const DocumentMetadataContainer = () => (
 		<>
@@ -48,7 +50,7 @@ export const AccordionDocumentCard = ({
 	return (
 		<div
 			className="container list-group-item list-group-item-action"
-			onClick={handleCardClick}
+			onDoubleClick={handleCardClick}
 		>
 			<DocumentCardContainer />
 			{isExpand && <DocumentMetadataContainer />}

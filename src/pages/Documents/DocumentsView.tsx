@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import DocumentList from "../../widgets/docs/DocumentList";
-import { DocumentAPI } from "../../shared/api/docs/documents";
 import type { Doc } from "../../shared/types/docs/Document";
 import { Spinner } from "../../components/spinner/Spinner";
 import type { DocMultipleResponse } from "../../shared/types/docs/DocumentResponse";
+import { DocuementAPI } from "../../shared/api/docs/documents";
+import { API_ENDPOINTS } from "../../shared/api/api/endpoints";
 
 const DocumentsView = (): React.ReactElement => {
 	const [documents, setDocuments] = useState<Doc[]>(new Array<Doc>());
@@ -16,7 +17,7 @@ const DocumentsView = (): React.ReactElement => {
 	);
 
 	useEffect(() => {
-		const api = new DocumentAPI();
+		const api = new DocuementAPI(API_ENDPOINTS.documents);
 		api
 			.read<undefined, DocMultipleResponse>()
 			.then((res: DocMultipleResponse) => {
