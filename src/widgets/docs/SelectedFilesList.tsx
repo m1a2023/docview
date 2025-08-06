@@ -1,18 +1,24 @@
-import type React from "react";
-import FileCard from "../../components/files/FileCard";
+import React from "react";
+import { AccordionFileCard } from "./AccordionFileCard";
 
-interface SelectedFilesViewProps {
+interface SelectedFilesProps {
 	files: File[];
+	capture: (initialState: File[] | (() => File[])) => void;
 }
 
 const SelectedFilesList = ({
 	files,
-}: SelectedFilesViewProps): React.ReactElement => {
+	capture,
+}: SelectedFilesProps): React.ReactElement => {
+	const removeFile = (file: File) => {
+		capture(files.filter((f) => f != file));
+	};
+
 	return (
 		<>
 			<div className="list-group">
 				{files.map((file) => (
-					<FileCard file={file} />
+					<AccordionFileCard file={file} onDelete={removeFile} />
 				))}
 			</div>
 		</>

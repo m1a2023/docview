@@ -11,7 +11,7 @@ const DocumentsUpload = (): React.ReactElement => {
 			<div className="mb-4">
 				<MultipleFileInput capture={setSelectedFiles} />
 			</div>
-			<SelectedFilesList files={selectedFiles} />
+			<SelectedFilesList files={selectedFiles} capture={setSelectedFiles} />
 		</>
 	);
 };

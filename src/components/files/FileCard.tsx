@@ -1,20 +1,20 @@
 import type React from "react";
 import reduceSize from "../../features/utils/SizeReducer";
+import type { FileProps } from "../../shared/types/files/FileProps";
 
-interface FileCardProps {
-	file: File;
+interface FileCardProps extends FileProps {
+	children?: React.ReactNode;
 }
 
-const FileCard = ({ file }: FileCardProps): React.ReactElement => {
+const FileCard = ({ file, children }: FileCardProps): React.ReactElement => {
 	const size = reduceSize(file.size);
 
 	return (
 		<>
-			<div className="container list-group-item list-group-item-action">
-				<div className="row">
-					<div className="col text-break">{file.name}</div>
-					<div className="col-2 text-mid container">{size}</div>
-				</div>
+			<div className="row">
+				<div className="col text-break">{file.name}</div>
+				<div className="col-2 text-mid container">{size}</div>
+				{children}
 			</div>
 		</>
 	);

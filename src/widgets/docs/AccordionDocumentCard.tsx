@@ -6,6 +6,7 @@ import { IoMdDownload } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
 import { Download } from "../../features/utils/Download";
 import { API_ENDPOINTS } from "../../shared/api/api/endpoints";
+import { MetadataContainer } from "../../components/MetadataContainer";
 
 export const AccordionDocumentCard = ({
 	document,
@@ -29,9 +30,9 @@ export const AccordionDocumentCard = ({
 	const DocumentMetadataContainer = () => (
 		<>
 			<hr className="divider" />
-			<div className="collapse show">
+			<MetadataContainer>
 				<DocumentMetadata document={document} />
-			</div>
+			</MetadataContainer>
 		</>
 	);
 
