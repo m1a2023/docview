@@ -1,8 +1,8 @@
 import type React from "react";
 import reduceSize from "../../features/utils/SizeReducer";
-import type { FileProps } from "../../shared/types/files/FileProps";
+import type { SingleFileProps } from "../../shared/types/files/FileProps";
 
-interface FileCardProps extends FileProps {
+interface FileCardProps extends SingleFileProps {
 	children?: React.ReactNode;
 }
 

@@ -1,10 +1,10 @@
 import React from "react";
-import type { FileProps } from "../../shared/types/files/FileProps";
 import FileCard from "../../components/files/FileCard";
 import { MdDelete } from "react-icons/md";
 import { MetadataContainer } from "../../components/MetadataContainer";
+import type { SingleFileProps } from "../../shared/types/files/FileProps";
 
-interface AccordionFileCardProps extends FileProps {
+interface AccordionFileCardProps extends SingleFileProps {
 	onDelete: (file: File) => void;
 }
 

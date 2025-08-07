@@ -1,10 +1,12 @@
 import { type ChangeEvent } from "react";
+import type {
+	FileCaptureProps,
+	MultipleFileProps,
+} from "../../shared/types/files/FileProps";
 
-interface MultipleFileInputProps {
-	capture: (initialState: File[] | (() => File[])) => void;
-}
+interface MultipleFileInputProps extends MultipleFileProps, FileCaptureProps {}
 
-const MultipleFileInput = ({ capture }: MultipleFileInputProps) => {
+const MultipleFileInput = ({ files, capture }: MultipleFileInputProps) => {
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		if (e.target.files) {
 			capture(Array.from(e.target.files));
@@ -16,12 +18,17 @@ const MultipleFileInput = ({ capture }: MultipleFileInputProps) => {
 	return (
 		<>
 			<div className="input-group">
-				<input
-					type="file"
-					className="form-control"
-					multiple
-					onChange={handleChange}
-				/>
+				<label className="form-control cursor-pointer">
+					<input
+						type="file"
+						className="display-none"
+						multiple
+						onChange={handleChange}
+					/>
+					{files?.length > 0
+						? `Selected ${files.length} files`
+						: "Choose Files"}
+				</label>
 				<button className="btn btn-outline-primary" type="button">
 					Upload
 				</button>
