@@ -12,8 +12,8 @@ const FileCard = ({ file, children }: FileCardProps): React.ReactElement => {
 	return (
 		<>
 			<div className="row">
-				<div className="col text-break">{file.name}</div>
-				<div className="col-2 text-mid container">{size}</div>
+				<div className="col text-start">{file.name}</div>
+				<div className="col-md-auto text-mid">{size}</div>
 				{children}
 			</div>
 		</>

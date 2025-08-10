@@ -5,6 +5,6 @@ interface MetadataContainerProps {
 export const MetadataContainer = ({ children }: MetadataContainerProps) => (
 	<>
 		<hr className="divider" />
-		<div className="collapse show"> {children}</div>
+		<div className="collapse show">{children}</div>
 	</>
 );

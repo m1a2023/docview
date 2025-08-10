@@ -15,11 +15,11 @@ export const AccordionFileCard = ({
 	const [isExpand, setIsExpand] = React.useState(false);
 
 	const handleCardClick = () => setIsExpand(!isExpand);
+
 	const handleDeleteClick = () => onDelete(file);
 
 	const FileMetadataContainer = () => (
 		<>
-			<hr className="divider" />
 			<MetadataContainer>
 				<></>
 			</MetadataContainer>

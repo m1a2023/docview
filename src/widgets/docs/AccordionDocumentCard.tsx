@@ -29,7 +29,6 @@ export const AccordionDocumentCard = ({
 
 	const DocumentMetadataContainer = () => (
 		<>
-			<hr className="divider" />
 			<MetadataContainer>
 				<DocumentMetadata document={document} />
 			</MetadataContainer>
